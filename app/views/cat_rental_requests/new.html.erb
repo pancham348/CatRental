@@ -1,0 +1,34 @@
+<h1> Make a cat rental request </h1>
+  
+  <label for="cat_name">Name</label>
+  <input name="cat[name]" id="cat_name", type="text", value="<%=@cat.name%>">
+  <br>
+  
+  <label for="cat_birth_date">Birth Date</label>
+  <input name="cat[birth_date]", type="date", max = "<%=Date.current%>", value="<%=@cat.birth_date%>">
+  <br>
+  
+  <label>Sex</label>
+  <div>
+    <input name="cat[sex]" id="cat_sex_m" type="radio" value="M" checked= "<%=@cat.sex == 'M'%>">
+    <label for="cat_sex_m">Male</label>
+    <input name="cat[sex]" id="cat_sex_f" type="radio" value="F" checked="<%= @cat.sex == 'F'%>">
+    <label for="cat_sex_f">Female</label>
+  </div>
+  <br>
+  
+  <label for="cat_description">Description</label>
+  <textarea name="cat[description]" id="cat_description", value="<%=@cat.description%>"><%=@cat.description%></textarea>
+  <br>
+  
+  <label for="cat">Cat Desired</label>
+  <select name="cat[name]">
+    <%=cats = Cat.all%>
+    <%= cats.each do |cat|%>
+    <option value ="<%cat.name%>"> </option>
+    <%end%>
+  </select>
+  <br>
+    
+ <input type="submit" value="request cat">
+</form>

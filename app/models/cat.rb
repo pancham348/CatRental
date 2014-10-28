@@ -1,10 +1,15 @@
 class Cat < ActiveRecord::Base
   validates :birth_date, :color, :name, :sex, presence: true
-  
   # validate :cat_born_before_today
-  
   validate :color_must_be_possible_for_a_cat
   validate :cat_must_be_male_or_female
+  
+  has_many(
+    :rental_requests,
+    class_name: 'CatRentalRequest',
+    foreign_key: :cat_id,
+    primary_key: :id
+  )
   
   def age
     @age = (birth_date - Date.current).to_i

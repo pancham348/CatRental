@@ -1,8 +1,11 @@
 <h1> All the Cats</h1>
 <ul>
   <% @cats.each do |cat|%>
-  <li><%= cat.inspect %>
+    <li>
+      <%= cat.inspect %>
+      <%= link_to "Rent a cat!", new_cat_cat_rental_request_url(cat) %>  
+    </li>
   <% end %>
 </ul>
-
+                           
 <%= link_to "Create new cat!", new_cat_url%>
