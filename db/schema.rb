@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028172806) do
+ActiveRecord::Schema.define(version: 20141028201909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cats", force: true do |t|
-    t.date     "birth_date",  null: false
+    t.string   "birth_date",  null: false
     t.string   "color",       null: false
     t.string   "name",        null: false
     t.string   "sex",         null: false

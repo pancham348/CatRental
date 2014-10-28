@@ -1,7 +1,7 @@
 class Cat < ActiveRecord::Base
   validates :birth_date, :color, :name, :sex, presence: true
   
-  validate :cat_born_before_today
+  # validate :cat_born_before_today
   
   validate :color_must_be_possible_for_a_cat
   validate :cat_must_be_male_or_female
@@ -31,9 +31,9 @@ class Cat < ActiveRecord::Base
     end
   end
   
-  def cat_born_before_today
-    unless Date.current - birth_date >= 0
-      errors[:birth_date] << "please choose a birthdate today or before"
-    end
-  end
+  # def cat_born_before_today
+ #    unless birth_date != "" && Date.current - birth_date > 0
+ #      errors[:birth_date] << "please choose a birthdate today or before"
+ #    end
+ #  end
 end
