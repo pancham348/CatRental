@@ -1,9 +1,6 @@
 <h1> <%= @cat.name%></h1>
 <table>
-  <tr>
-      <td>Atrribute</td>
-      <td>Value</td>
-  </tr>
+
   <tr>
     <td> Name, <%= @cat.name%></td>
   </tr>  
@@ -20,3 +17,8 @@
 
 <%= link_to "Edit this cat", edit_cat_url%>
 
+<ol>
+  <% @cat.order_requests.each do |request| %>
+    <li>Start:<%=request.start_date%> &nbsp;End:<%=request.end_date%></li>
+  <%end%>
+</ol>

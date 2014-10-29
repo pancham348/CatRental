@@ -1,33 +1,16 @@
-<h1> Make a cat rental request </h1>
-  
-  <label for="cat_name">Name</label>
-  <input name="cat[name]" id="cat_name", type="text", value="<%=@cat.name%>">
+<form action="<%= cat_rental_requests_url%>" method="POST">
+<h1> Make a cat rental request for <%=@cat.name%> </h1>
+
+  <input type="hidden", name="cat_rental_request[cat_id]",  
+                        value="<%= @cat.id %>">
+                        
+  <label for="cat_rental_request_start_date">Start Date</label>
+  <input name="cat_rental_request[start_date]", type="date", min = "<%=Date.current%>", value="<%=@rental_request.start_date%>">
   <br>
   
-  <label for="cat_birth_date">Birth Date</label>
-  <input name="cat[birth_date]", type="date", max = "<%=Date.current%>", value="<%=@cat.birth_date%>">
-  <br>
-  
-  <label>Sex</label>
-  <div>
-    <input name="cat[sex]" id="cat_sex_m" type="radio" value="M" checked= "<%=@cat.sex == 'M'%>">
-    <label for="cat_sex_m">Male</label>
-    <input name="cat[sex]" id="cat_sex_f" type="radio" value="F" checked="<%= @cat.sex == 'F'%>">
-    <label for="cat_sex_f">Female</label>
-  </div>
-  <br>
-  
-  <label for="cat_description">Description</label>
-  <textarea name="cat[description]" id="cat_description", value="<%=@cat.description%>"><%=@cat.description%></textarea>
-  <br>
-  
-  <label for="cat">Cat Desired</label>
-  <select name="cat[name]">
-    <%=cats = Cat.all%>
-    <%= cats.each do |cat|%>
-    <option value ="<%cat.name%>"> </option>
-    <%end%>
-  </select>
+  <label for="cat_rental_request_end_date">End Date</label>
+  <input name="cat_rental_request[end_date]", type="date",          
+        value="<%=@rental_request.end_date%>">
   <br>
     
  <input type="submit" value="request cat">

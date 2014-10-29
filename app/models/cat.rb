@@ -3,13 +3,18 @@ class Cat < ActiveRecord::Base
   # validate :cat_born_before_today
   validate :color_must_be_possible_for_a_cat
   validate :cat_must_be_male_or_female
-  
+
   has_many(
     :rental_requests,
     class_name: 'CatRentalRequest',
     foreign_key: :cat_id,
-    primary_key: :id
+    primary_key: :id,  
+    dependent: :destroy
   )
+  
+  def order_requests
+    rental_requests.order(start_date: :asc)
+  end
   
   def age
     @age = (birth_date - Date.current).to_i
